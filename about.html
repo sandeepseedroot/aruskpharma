@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Base Pharmachem | About us</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/logo.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .mg-left-5 {
+            margin-left: 5px;
+        }
+
+        .blink_me {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .textshadow {
+            text-shadow: 1px 1px 0 #ff8c00, 2px 2px 0 #ff8c00;
+        }
+
+
+
+               .clickhere {
+            color: white;
+            position: absolute;
+            bottom: 2%;
+            left: 18%;
+            font-size: 38px;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 #344a7b, 2px 2px 0 #344a7b;
+        }
+
+        .hover_bkgr_fricc {
+            background: rgba(0,0,0,.4);
+            cursor: pointer;
+            display: none;
+            height: 100%;
+            position: fixed;
+            text-align: center;
+            top: 0;
+            width: 100%;
+            z-index: 10000;
+        }
+
+            .hover_bkgr_fricc .helper {
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+            }
+
+            .hover_bkgr_fricc > div {
+                background-color: #fff;
+                box-shadow: 10px 10px 60px #555;
+                display: inline-block;
+                height: auto;
+                max-width: 600px;
+                min-height: 100px;
+                vertical-align: middle;
+                width: 90%;
+                position: relative;
+                border-radius: 8px;
+                padding: 10px 10px;
+            }
+
+        .popupCloseButton {
+            color: darkred;
+            background-color: #fff;
+            /*border: 3px solid #999;*/
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+            font-family: arial;
+            font-weight: bold;
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 25px;
+            line-height: 30px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+
+            .popupCloseButton:hover {
+                background-color: #ccc;
+            }
+
+        .trigger_popup_fricc {
+            cursor: pointer;
+            font-size: 20px;
+            margin: 20px;
+            display: inline-block;
+            font-weight: bold;
+        }
+    </style>
+    <!-- put ur header here -->
+    <style>
+        .news-date {
+            position: relative;
+            z-index: 1;
+            font-size: 14px;
+            color: #afb4bf;
+            display: inline-block;
+            margin-right: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .news-type {
+            color: #c83434;
+        }
+
+        .news-title {
+            font-size: 20px;
+            line-height: 1.2;
+            display: block;
+            margin-bottom: 15px;
+        }
+    </style>
+    <!-- end ur header here -->
+</head>
+<body>
+    <div>
+        <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
+
+    <!-- Header Area Start -->
+    <header class="header-area">
+
+        <!-- Top Header Area Start -->
+        <div class="top-header-area top-header-area-bar">
+            <div class="container">                
+            </div>
+        </div>
+        <!-- Top Header Area End -->
+
+         <!-- Top Header Area Start -->
+        <div class="top-header-area" style="background-color:#f7f7f7;height: auto;">
+            <div class="container">
+                <div class="header-container">
+                    <div>
+                        <img src="img/logo.png" style="max-height: 140px;margin: 6px 0 6px 0px;"/>
+                        <!-- <h5 style="font-size:10pt;font-family:Verdana;font-weight: 600;color: #0e8fcd">We're dedicated to your health!</h5> -->
+                    </div>
+                    <div style="text-align: center;">
+                        <h2 style="color:#0e8fcd;font-weight: 600;margin-bottom: 0;">BASE PHARMACHEM CO.</h2>
+                        <h5 style="font-size:9pt;font-family:Verdana;font-weight: 600;color:#36b64c;margin-bottom: 0;">We're dedicated to your health!</h5>                            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Header Area End -->
+
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-center" id="robertoNav">
+
+                         <!-- Logo -->
+                         <a class="nav-brand" href="./index.html"></a> 
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li class="active"><a href="./index.html">Home</a></li>
+									<li><a href="./about.html">About us</a></li>
+                                    <li><a href="./products.html">Products</a></li>
+                                    <li><a href="./contact.html">Contact us</a></li>
+                                </ul>
+                                <!-- Search -->
+                                <!-- <div class="search-btn ml-4">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </div> -->
+
+                                <!-- Book Now -->
+                                <!-- <div class="book-now-btn ml-3 ml-lg-5">
+                                    <a href="#">Book Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                </div> -->
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-- Put ur body here -->
+    <!-- Breadcrumb Area Start -->
+    <div class="breadcrumb-area contact-breadcrumb bg-img bg-overlay jarallax" style="background-image: url(img/bg.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center mt-100">
+                        <h2 class="page-title">About Us</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Area End -->
+
+    <!-- Google Maps & Contact Info Area Start -->
+    <section class="google-maps-contact-info">
+        <div class="container-fluid">
+            <div class="google-maps-contact-content">
+                <!-- <div class="section-heading wow fadeInUp" data-wow-delay="100ms">
+                    <h6>About Us</h6>
+                    <h4>Objectives of School</h4>
+                </div> -->
+                <p>At BASE PHARMACHEM, we are a young and dynamic pharmaceutical trading company specializing in the distribution of high-quality Active Pharmaceutical Ingredients (APIs) to pharmaceutical manufacturers & research institutions worldwide. With a relentless commitment to excellence and a customer-centric approach, we strive to be your preferred partner for all your API sourcing needs.</p>
+            <hr/>
+                <div class="section-heading wow fadeInUp" data-wow-delay="100ms">
+                    <h2>Why Choose us?</h2>
+                </div>
+                <p><i class="fa fa-arrow-right"></i> Extensive API Portfolio: We offer a comprehensive selection of APIs covering diverse therapeutic categories. Our extensive portfolio allows pharmaceutical manufacturers and in short we thrives to provide a range of APIs under one roof. </p>                
+                <p><i class="fa fa-arrow-right"></i> Quality Assurance: Quality is the cornerstone of our business. We work closely with reputed manufacturers and suppliers to ensure that all our APIs adhere to stringent quality control measures and regulatory requirements as per ICH guidelines.</p>
+                <p><i class="fa fa-arrow-right"></i> Global Reach: With a well-established network of partners and logistics capabilities, we have a global presence that enables us to serve clients across the world efficiently. We are well-equipped to facilitate international shipments and timely deliveries. Our key markets are Europe, CIS, Latam, Bangladesh, and the Middle East.</p>
+                <p><i class="fa fa-arrow-right"></i> Regulatory Compliance: We understand the critical importance of compliance in the pharmaceutical industry. Our team is well-versed in international regulations, and we ensure that all our products meet the necessary quality and safety standards.</p>
+                <p><i class="fa fa-arrow-right"></i> Customer-Focused Service: Our customers' success is our top priority. We pride ourselves on delivering exceptional customer service, understanding our client's unique needs, and offering tailored solutions to meet their specific requirements.</p>
+                <p><i class="fa fa-arrow-right"></i> Research and Development Support: We recognize the significance of research and development in advancing healthcare. As a proactive partner, we provide support to research institutions and pharmaceutical companies in sourcing APIs for their innovative projects </p>
+            </div>
+        </div>
+    </section>
+    <!-- Google Maps & Contact Info Area End -->
+        <!-- body end here -->
+        <br />
+        <br />
+        <!-- Footer Area Start -->
+    <footer class="footer-area section-padding-80-0">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area">
+            <div class="container">
+                <div class="row align-items-baseline justify-content-between">
+                    <!-- Single Footer Widget Area -->
+                    <div class="col-12 col-lg-6">
+                        <div class="single-footer-widget mb-30">
+                            <!-- Footer Logo -->              
+                            <h5 class="widget-title">Contact</h5>              
+                            <a href="tel:+91 9987883981"><span><i class="fa fa-phone" aria-hidden="true"></i>   +91 9987883981</span></a>
+                            <br />
+                            <a href="mailto: mktg@basepharmachem.com"><span><i class="fa fa-envelope-o" aria-hidden="true"></i>    mktg@basepharmachem.com</span></a>                            
+                            <br />
+                            <span><i class="fa fa-map-marker" aria-hidden="true"></i>   Rohan Arcade, 7E, Dattani Park Road, Nr. River Park Bldg, Thakur Village, Kandivli (E), Mumbai - 400101, India</span>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget Area -->
+                    <div class="col-12 col-lg-6">
+                        <div class="single-footer-widget">
+                            <!-- Widget Title -->
+                            <h5 class="widget-title">At BASE PHARMACHEM</h5>
+                            <span>We are a young and dynamic pharmaceutical trading company specializing in the distribution of high-quality Active Pharmaceutical Ingredients (APIs) to pharmaceutical manufacturers & research institutions worldwide. With a relentless commitment to excellence and a customer-centric approach, we strive to be your preferred partner for all your API sourcing needs.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copywrite Area -->
+        <div class="container" style="background-color: white;">
+            <div class="copywrite-content" style="border-top: none;">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-5">
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text">
+                            <p style="color:#777a7e;font-weight: 600;">Copyright &copy;<script>document.write(new Date().getFullYear());</script> </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-7">
+                        <div class="social-info">
+                            <span style="color:#0e8fcd;font-weight: 600;"> Base Pharmachem Co.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area End -->
+
+    <!-- **** All JS Files ***** -->
+    <!-- jQuery 2.2.4 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Popper -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- All Plugins -->
+    <script src="js/roberto.bundle.js"></script>
+    <!-- Active -->
+    <script src="js/default-assets/active.js"></script>
+</body>
+</html>
