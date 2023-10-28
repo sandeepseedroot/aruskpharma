@@ -2498,7 +2498,7 @@ html .ui-button.ui-state-disabled:active {
   gap: 5px;
   justify-content: flex-start;
 }
-.product-input{
+.full-width{
   width: -webkit-fill-available;
 }
 .product-dropdown{
@@ -2507,4 +2507,28 @@ html .ui-button.ui-state-disabled:active {
 .product-list-container{
   margin-top: 20px;
   min-height: 500px;
+}
+
+.panel{
+  margin-bottom: 10px;
+  border: 1px solid #cdcdcd;
+}
+
+.panel-heading{
+  background-color: #d2d2d2;
+  padding: 1px 10px;
+  text-align: center;
+}
+.panel-body{
+  padding: 10px;  
+  overflow-x: scroll;
+}
+.toggle-a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.fa-sm{
+  font-size: small;
 }
