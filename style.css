@@ -2532,3 +2532,7 @@ html .ui-button.ui-state-disabled:active {
 .fa-sm{
   font-size: small;
 }
+
+.wrap-word{
+  word-wrap: break-word;
+}
