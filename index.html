@@ -1,432 +1,525 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Title -->
     <title>Arusk Pharma</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/logo.png">
+    <link rel="icon" href="img/logo.png" />
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <style>
-        .mg-left-5 {
-            margin-left: 5px;
+      .mg-left-5 {
+        margin-left: 5px;
+      }
+
+      .blink_me {
+        animation: blinker 1s linear infinite;
+      }
+
+      @keyframes blinker {
+        50% {
+          opacity: 0;
         }
+      }
 
-        .blink_me {
-            animation: blinker 1s linear infinite;
-        }
+      .textshadow {
+        text-shadow: 1px 1px 0 #ff8c00, 2px 2px 0 #ff8c00;
+      }
 
-        @keyframes blinker {
-            50% {
-                opacity: 0;
-            }
-        }
+      .clickhere {
+        color: white;
+        position: absolute;
+        bottom: 2%;
+        left: 18%;
+        font-size: 38px;
+        font-weight: bold;
+        text-shadow: 1px 1px 0 #344a7b, 2px 2px 0 #344a7b;
+      }
 
-        .textshadow {
-            text-shadow: 1px 1px 0 #ff8c00, 2px 2px 0 #ff8c00;
-        }
+      .hover_bkgr_fricc {
+        background: rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        display: none;
+        height: 100%;
+        position: fixed;
+        text-align: center;
+        top: 0;
+        width: 100%;
+        z-index: 10000;
+      }
 
+      .hover_bkgr_fricc .helper {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
 
+      .hover_bkgr_fricc > div {
+        background-color: #fff;
+        box-shadow: 10px 10px 60px #555;
+        display: inline-block;
+        height: auto;
+        max-width: 600px;
+        min-height: 100px;
+        vertical-align: middle;
+        width: 90%;
+        position: relative;
+        border-radius: 8px;
+        padding: 10px 10px;
+      }
 
-               .clickhere {
-            color: white;
-            position: absolute;
-            bottom: 2%;
-            left: 18%;
-            font-size: 38px;
-            font-weight: bold;
-            text-shadow: 1px 1px 0 #344a7b, 2px 2px 0 #344a7b;
-        }
+      .popupCloseButton {
+        color: darkred;
+        background-color: #fff;
+        /*border: 3px solid #999;*/
+        border-radius: 50px;
+        cursor: pointer;
+        display: inline-block;
+        font-family: arial;
+        font-weight: bold;
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        font-size: 25px;
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+      }
 
-        .hover_bkgr_fricc {
-            background: rgba(0,0,0,.4);
-            cursor: pointer;
-            display: none;
-            height: 100%;
-            position: fixed;
-            text-align: center;
-            top: 0;
-            width: 100%;
-            z-index: 10000;
-        }
+      .popupCloseButton:hover {
+        background-color: #ccc;
+      }
 
-            .hover_bkgr_fricc .helper {
-                display: inline-block;
-                height: 100%;
-                vertical-align: middle;
-            }
-
-            .hover_bkgr_fricc > div {
-                background-color: #fff;
-                box-shadow: 10px 10px 60px #555;
-                display: inline-block;
-                height: auto;
-                max-width: 600px;
-                min-height: 100px;
-                vertical-align: middle;
-                width: 90%;
-                position: relative;
-                border-radius: 8px;
-                padding: 10px 10px;
-            }
-
-        .popupCloseButton {
-            color: darkred;
-            background-color: #fff;
-            /*border: 3px solid #999;*/
-            border-radius: 50px;
-            cursor: pointer;
-            display: inline-block;
-            font-family: arial;
-            font-weight: bold;
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 25px;
-            line-height: 30px;
-            width: 30px;
-            height: 30px;
-            text-align: center;
-        }
-
-            .popupCloseButton:hover {
-                background-color: #ccc;
-            }
-
-        .trigger_popup_fricc {
-            cursor: pointer;
-            font-size: 20px;
-            margin: 20px;
-            display: inline-block;
-            font-weight: bold;
-        }
+      .trigger_popup_fricc {
+        cursor: pointer;
+        font-size: 20px;
+        margin: 20px;
+        display: inline-block;
+        font-weight: bold;
+      }
     </style>
     <!-- put ur header here -->
     <style>
-        .news-date {
-            position: relative;
-            z-index: 1;
-            font-size: 14px;
-            color: #afb4bf;
-            display: inline-block;
-            margin-right: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+      .news-date {
+        position: relative;
+        z-index: 1;
+        font-size: 14px;
+        color: #afb4bf;
+        display: inline-block;
+        margin-right: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
 
-        .news-type {
-            color: #c83434;
-        }
+      .news-type {
+        color: #c83434;
+      }
 
-        .news-title {
-            font-size: 20px;
-            line-height: 1.2;
-            display: block;
-            margin-bottom: 15px;
-        }
+      .news-title {
+        font-size: 20px;
+        line-height: 1.2;
+        display: block;
+        margin-bottom: 15px;
+      }
     </style>
     <!-- end ur header here -->
-</head>
-<body>
+  </head>
+  <body>
     <div>
-        <!-- Preloader -->
-    <div id="preloader">
+      <!-- Preloader -->
+      <div id="preloader">
         <div class="loader"></div>
-    </div>
-    <!-- /Preloader -->
+      </div>
+      <!-- /Preloader -->
 
-    <!-- Header Area Start -->
-    <header class="header-area">
+      <!-- Header Area Start -->
+      <header class="header-area">
         <!-- Search Form -->
         <div class="search-form d-flex align-items-center">
-            <div class="container">
-                <!-- <form action="./index.html" method="get"> -->
-                    <!-- <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ..."> -->
-                    <!-- <button type="submit"><i class="icon_search"></i></button> -->
-                <!-- </form> -->
-            </div>
+          <div class="container">
+            <!-- <form action="./index.html" method="get"> -->
+            <!-- <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ..."> -->
+            <!-- <button type="submit"><i class="icon_search"></i></button> -->
+            <!-- </form> -->
+          </div>
         </div>
 
         <!-- Top Header Area Start -->
         <div class="top-header-area top-header-area-bar">
-            <div class="container">
-                
-            </div>
+          <div class="container"></div>
         </div>
         <!-- Top Header Area End -->
 
-         <!-- Top Header Area Start -->
-        <div class="top-header-area" style="background-color:#f7f7f7;height: auto;">
-            <div class="container">
-                <div class="header-container">
-                    <div>
-                        <img src="img/logo.png" style="max-height: 140px;margin: 6px 0 6px 0px;"/>
-                        <!-- <h5 style="font-size:10pt;font-family:Verdana;font-weight: 600;color: #0e8fcd">We're dedicated to your health!</h5> -->
-                    </div>
-                    <div style="text-align: center;">
-                        <h2 style="color:#0e8fcd;font-weight: 600;margin-bottom: 0;">ARUSK PHARMA PRIVATE LTD.</h2>
-                        <h5 style="font-size:9pt;font-family:Verdana;font-weight: 600;color:#36b64c;margin-bottom: 0;">We're dedicated to your health!</h5>                            
-                    </div>
-                </div>
+        <!-- Top Header Area Start -->
+        <div
+          class="top-header-area"
+          style="background-color: #f7f7f7; height: auto"
+        >
+          <div class="container">
+            <div class="header-container">
+              <div>
+                <img
+                  src="img/logo.png"
+                  style="max-height: 140px; margin: 6px 0 6px 0px"
+                />
+                <!-- <h5 style="font-size:10pt;font-family:Verdana;font-weight: 600;color: #0e8fcd">Empowering Pharma with Precision Ingredients</h5> -->
+              </div>
+              <div style="text-align: center">
+                <h2 style="color: #0e8fcd; font-weight: 600; margin-bottom: 0">
+                  ARUSK PHARMA PRIVATE LTD.
+                </h2>
+                <h5
+                  style="
+                    font-size: 9pt;
+                    font-family: Verdana;
+                    font-weight: 600;
+                    color: #36b64c;
+                    margin-bottom: 0;
+                  "
+                >
+                  Empowering Pharma with Precision Ingredients
+                </h5>
+              </div>
             </div>
+          </div>
         </div>
         <!-- Top Header Area End -->
 
         <!-- Main Header Start -->
         <div class="main-header-area">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Classy Menu -->
-                    <nav class="classy-navbar justify-content-center" id="robertoNav">
+          <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+              <!-- Classy Menu -->
+              <nav class="classy-navbar justify-content-center" id="robertoNav">
+                <!-- Logo -->
+                <a class="nav-brand" href="./index.html"></a>
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                  <span class="navbarToggler"
+                    ><span></span><span></span><span></span
+                  ></span>
+                </div>
 
-                         <!-- Logo -->
-                         <a class="nav-brand" href="./index.html"></a> 
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-                            <!-- Menu Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul id="nav">
-                                    <li class="active"><a href="./index.html">Home</a></li>
-									<li><a href="./about.html">About us</a></li>
-                                    <li><a href="./products.html">Products</a></li>
-                                    <li><a href="./contact.html">Contact us</a></li>
-                                </ul>
-                                <!-- Search -->
-                                <!-- <div class="search-btn ml-4">
+                <!-- Menu -->
+                <div class="classy-menu">
+                  <!-- Menu Close Button -->
+                  <div class="classycloseIcon">
+                    <div class="cross-wrap">
+                      <span class="top"></span><span class="bottom"></span>
+                    </div>
+                  </div>
+                  <!-- Nav Start -->
+                  <div class="classynav">
+                    <ul id="nav">
+                      <li class="active"><a href="./index.html">Home</a></li>
+                      <li><a href="./about.html">About us</a></li>
+                      <li><a href="./products.html">Products</a></li>
+                      <li><a href="./contact.html">Contact us</a></li>
+                    </ul>
+                    <!-- Search -->
+                    <!-- <div class="search-btn ml-4">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </div> -->
 
-                                <!-- Book Now -->
-                                <!-- <div class="book-now-btn ml-3 ml-lg-5">
+                    <!-- Book Now -->
+                    <!-- <div class="book-now-btn ml-3 ml-lg-5">
                                     <a href="#">Book Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                 </div> -->
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-                    </nav>
+                  </div>
+                  <!-- Nav End -->
                 </div>
+              </nav>
             </div>
+          </div>
         </div>
-    </header>
-        <!-- Put ur body here -->
-          <!-- Welcome Area Start -->
-    <section class="welcome-area">
-        <div class="welcome-slides owl-carousel" id="slider">
+      </header>
+      <!-- Put ur body here -->
+      <!-- Welcome Area Start -->
+      <section class="welcome-area">
+        <div class="welcome-slides owl-carousel" id="slider"></div>
+      </section>
+      <!-- Welcome Area End -->
 
-        </div>
-    </section>
-    <!-- Welcome Area End -->
-
-    <!-- About Us Area Start -->
-    <section class="roberto-about-area">
+      <!-- About Us Area Start -->
+      <section class="roberto-about-area">
         <!-- Hotel Search Form Area -->
         <div class="container mt-30">
-            <div class="row align-items-center">
-                <div class="col-12 col-lg-6">
-                    <!-- Section Heading -->
-                    <div class="section-heading wow fadeInUp" data-wow-delay="100ms">
-                        <h6>At</h6>
-                        <h2>Arusk Pharma</h2>
-                    </div>
-                    <div class="about-us-content mb-30">
-                        <p class="wow fadeInUp" data-wow-delay="300ms">we are a young and dynamic pharmaceutical trading company specializing in the distribution of high-quality Active Pharmaceutical Ingredients (APIs) to pharmaceutical manufacturers & research institutions worldwide. With a relentless commitment to excellence and a customer-centric approach, we strive to be your preferred partner for all your API sourcing needs.</p>
-                        
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-6">
-                    <div class="about-us-thumbnail mb-100 wow fadeInUp" data-wow-delay="700ms">
-                        <div class="row no-gutters">
-                            <div class="single-thumb">
-                                    <img src="img/at-company.jpg" alt="">
-                                </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+              <!-- Section Heading -->
+              <div class="section-heading wow fadeInUp" data-wow-delay="100ms">
+                <h6>About</h6>
+                <h2>Arusk Pharma</h2>
+              </div>
+              <div class="about-us-content mb-30">
+                <p class="wow fadeInUp" data-wow-delay="300ms">
+                  Welcome to ARUSK Pharma – Your Trusted Pharmaceutical Partner
+                </p>
+                <p class="wow fadeInUp" data-wow-delay="300ms">
+                  At ARUSK Pharma, we recognize that innovation and precision
+                  are the driving forces behind success in today’s fast-paced
+                  pharmaceutical landscape. As a dynamic force in Intermediates,
+                  APIs, Excipients & Finished Formulations distribution, we are
+                  committed to delivering more than just products — we deliver
+                  value, reliability, and excellence at every step.
+                </p>
+                <p class="wow fadeInUp" data-wow-delay="300ms">
+                  With a team of highly skilled professionals and a deep
+                  understanding of global pharmaceutical trends, we ensure that
+                  our offerings align with the latest advancements, giving our
+                  partners a competitive edge. Quality isn’t just a standard for
+                  us — it’s a promise we uphold in every product we deliver.
+                </p>
+              </div>
             </div>
+
+            <div class="col-12 col-lg-6">
+              <div
+                class="about-us-thumbnail mb-100 wow fadeInUp"
+                data-wow-delay="700ms"
+              >
+                <div class="row no-gutters">
+                  <div class="single-thumb">
+                    <img src="img/at-company.jpg" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
-    <!-- About Us Area End -->
-    <hr />
-    <!-- Testimonials Area Start -->
-    <section class="roberto-testimonials-area">
+      </section>
+      <!-- About Us Area End -->
+      <hr />
+      <!-- Testimonials Area Start -->
+
+      <section class="roberto-testimonials-area">
         <div class="container">
-            <div class="row align-items-center">
-
-                <div class="col-12 col-md-12">
-                    <!-- Section Heading -->
-                    <div class="section-heading">
-                        <h6>Our</h6>
-                        <h2>Mission</h2>
-                    </div>
-                    <!-- Testimonial Slide -->
-                    <div class="testimonial-slides owl-carousel mb-30">
-
-                        <!-- Single Testimonial Slide -->
-
-                        <div class="single-testimonial-slide">
-                            <!-- Post Meta -->
-                            <div>
-                                <!-- <a href="#" class="news-date">Feb 15, 2020</a> -->
-                                <!-- <%--<a href="#" class="news-type">Thought</a>--%> -->
-                            </div>
-                            <!-- Post Title -->
-                            <!-- <a href="#" class="news-title">Motivational thought</a> -->
-                            <p>Our mission is to be a trusted and reliable global source of Active Pharmaceutical Ingredients (API), providing our clients with access to a wide range of APIs that meet the highest quality standards.</p>
-                            <!-- <a href="#" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a> -->
-                        </div>
-
-
-                    </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-md-12">
+              <!-- Section Heading -->
+              <div class="section-heading">
+                <h6>Our</h6>
+                <h2>Vision</h2>
+              </div>
+              <!-- Testimonial Slide -->
+              <div class="testimonial-slides owl-carousel mb-30">
+                <!-- Single Testimonial Slide -->
+                <div class="single-testimonial-slide">
+                  <p>
+                    At ARUSK Pharma, we foresee a future where groundbreaking
+                    pharmaceuticals and advanced research enhance global health
+                    advancements.
+                  </p>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
-
-    <section class="roberto-testimonials-area">
+      </section>
+      <section class="roberto-testimonials-area">
         <div class="container">
-            <div class="row align-items-center">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-12">
+              <!-- Section Heading -->
+              <div class="section-heading">
+                <h6>Our</h6>
+                <h2>Mission</h2>
+              </div>
+              <!-- Testimonial Slide -->
+              <div class="testimonial-slides owl-carousel mb-30">
+                <!-- Single Testimonial Slide -->
 
-                <div class="col-12 col-md-12">
-                    <!-- Section Heading -->
-                    <div class="section-heading">
-                        <h6>Our</h6>
-                        <h2>Commitment</h2>
-                    </div>
-                    <!-- Testimonial Slide -->
-                    <div class="testimonial-slides owl-carousel mb-30">
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide">
-                            <p>Our company understands the technology and medicine in the health care industry is consistently progressing. Our team of experienced professionals stays current about the latest drug trends.</p>                            
-                        </div>
-                    </div>
+                <div class="single-testimonial-slide">
+                  <!-- Post Meta -->
+                  <div>
+                    <!-- <a href="#" class="news-date">Feb 15, 2020</a> -->
+                    <!-- <%--<a href="#" class="news-type">Thought</a>--%> -->
+                  </div>
+                  <!-- Post Title -->
+                  <!-- <a href="#" class="news-title">Motivational thought</a> -->
+                  <p>
+                    We aim to be a trusted and reliable global source of
+                    pharmaceutical ingredients and allied products. We aim to
+                    provide our clients with access to a diverse range of
+                    products that adhere to the highest quality standards,
+                    ensuring their pharmaceutical needs are met with utmost
+                    excellence and precision.
+                  </p>
+                  <!-- <a href="#" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a> -->
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
-    <!-- Testimonials Area End -->
+      </section>
 
-    <!-- Call To Action Area Start -->
-    <section class="roberto-cta-area">
+      <!-- Testimonials Area End -->
+
+      <!-- Call To Action Area Start -->
+      <section class="roberto-cta-area">
         <div class="container">
-            <div class="cta-content bg-img bg-overlay jarallax" style="background-image: url(img/bg1.jpg);">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-7">
-                        <div class="cta-text mb-50">
-                            <h2>Our Products!</h2>
-                            <h6>Check our variety of products</h6>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-5 text-right">
-                        <a href="products.html" class="btn roberto-btn mb-50">Click to view!</a>
-                    </div>
+          <div
+            class="cta-content bg-img bg-overlay jarallax"
+            style="background-image: url(img/bg1.jpg)"
+          >
+            <div class="row align-items-center">
+              <div class="col-12 col-md-7">
+                <div class="cta-text mb-50">
+                  <h2>Our Products!</h2>
+                  <h6>Check our variety of products</h6>
                 </div>
+              </div>
+              <div class="col-12 col-md-5 text-right">
+                <a href="products.html" class="btn roberto-btn mb-50"
+                  >Click to view!</a
+                >
+              </div>
             </div>
+          </div>
         </div>
-    </section>
-    <!-- Call To Action Area End -->
-        <!-- body end here -->
-        <br />
-        <br />
-        <!-- Footer Area Start -->
-    <footer class="footer-area section-padding-80-0">
+      </section>
+      <!-- Call To Action Area End -->
+      <!-- body end here -->
+      <br />
+      <br />
+      <!-- Footer Area Start -->
+      <footer class="footer-area section-padding-80-0">
         <!-- Main Footer Area -->
         <div class="main-footer-area">
-            <div class="container">
-                <div class="row align-items-baseline justify-content-between">
-                    <!-- Single Footer Widget Area -->
-                    <div class="col-12 col-lg-6">
-                        <div class="single-footer-widget mb-30">
-                            <!-- Footer Logo -->              
-                            <h5 class="widget-title">Contact</h5>              
-                            <a href="tel:+91 9987883981"><span><i class="fa fa-phone" aria-hidden="true"></i>   +91 9987883981</span></a>
-                            <br />             
-                            <a href="https://api.whatsapp.com/send?phone=919987883981&text=Hi, I would like to enquire"><span><i class="fa fa-whatsapp" aria-hidden="true"></i>   +91 9987883981</span></a>
-                            <br />
-                            <a href="mailto: mktg@aruskpharma.com"><span><i class="fa fa-envelope-o" aria-hidden="true"></i>    mktg@aruskpharma.com</span></a>                            
-                            <br />
-                            <span><i class="fa fa-map-marker" aria-hidden="true"></i>   Shop No. A/12, Ground Floor, Shanikunj Residency-A, Haria Park, Dungra, Vapi (East) - 396191, Valsad, Gujarat</span>
-                        </div>
-                    </div>
-                    <!-- Single Footer Widget Area -->
-                    <div class="col-12 col-lg-6">
-                        <div class="single-footer-widget">
-                            <!-- Widget Title -->
-                            <h5 class="widget-title">At Arusk Pharma</h5>
-                            <span>We are a young and dynamic pharmaceutical trading company specializing in the distribution of high-quality Active Pharmaceutical Ingredients (APIs) to pharmaceutical manufacturers & research institutions worldwide. With a relentless commitment to excellence and a customer-centric approach, we strive to be your preferred partner for all your API sourcing needs.</span>
-                            <h5 class="widget-title">QUOTE</h5>
-                            <span>“Time and health are two precious assets that we don’t recognize and appreciate until they have been depleted.”  – Denis Waitley </span>
-                        </div>
-                    </div>
+          <div class="container">
+            <div class="row align-items-baseline justify-content-between">
+              <!-- Single Footer Widget Area -->
+              <div class="col-12 col-lg-6">
+                <div class="single-footer-widget mb-30">
+                  <!-- Footer Logo -->
+                  <h5 class="widget-title">Contact</h5>
+                  <a href="tel:+91 9987883981"
+                    ><span
+                      ><i class="fa fa-phone" aria-hidden="true"></i> +91
+                      9987883981</span
+                    ></a
+                  >
+                  <br />
+                  <a
+                    href="https://api.whatsapp.com/send?phone=919987883981&text=Hi, I would like to enquire"
+                    ><span
+                      ><i class="fa fa-whatsapp" aria-hidden="true"></i> +91
+                      9987883981</span
+                    ></a
+                  >
+                  <br />
+                  <a href="mailto: mktg@aruskpharma.com"
+                    ><span
+                      ><i class="fa fa-envelope-o" aria-hidden="true"></i>
+                      mktg@aruskpharma.com</span
+                    ></a
+                  >
+                  <br />
+                  <span
+                    ><i class="fa fa-map-marker" aria-hidden="true"></i> Shop
+                    No. A/12, Ground Floor, Shanikunj Residency-A, Haria Park,
+                    Dungra, Vapi (East) - 396191, Valsad, Gujarat</span
+                  >
                 </div>
+              </div>
+              <!-- Single Footer Widget Area -->
+              <div class="col-12 col-lg-6">
+                <div class="single-footer-widget">
+                  <!-- Widget Title -->
+                  <h5 class="widget-title">Arusk Pharma</h5>
+                  <span
+                    >We recognize that innovation and precision are the driving
+                    forces behind success in today’s fast-paced pharmaceutical
+                    landscape. As a dynamic force in Intermediates, APIs,
+                    Excipients & Finished Formulations distribution, we are
+                    committed to delivering more than just products — we deliver
+                    value, reliability, and excellence at every step.</span
+                  >
+                  <br />
+                  <h5 class="widget-title">QUOTE</h5>
+                  <span
+                    >At ARUSK Pharma, we don’t just supply products — we fuel
+                    pharmaceutical innovation and success. Partner with us and
+                    experience the “ARUSK advantage”
+                  </span>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
 
         <!-- Copywrite Area -->
-        <div class="container" style="background-color: white; margin-top: 10px;">
-            <div class="copywrite-content" style="border-top: none;">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-5">
-                        <!-- Copywrite Text -->
-                        <div class="copywrite-text">
-                            <p style="color:#777a7e;font-weight: 600;">Copyright &copy;<script>document.write(new Date().getFullYear());</script> </p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-7">
-                        <div class="social-info">
-                            <span style="color:#0e8fcd;font-weight: 600;"> Arusk Pharma Private Ltd.</span>
-                        </div>
-                    </div>
+        <div
+          class="container"
+          style="background-color: white; margin-top: 10px"
+        >
+          <div class="copywrite-content" style="border-top: none">
+            <div class="row align-items-center">
+              <div class="col-12 col-md-5">
+                <!-- Copywrite Text -->
+                <div class="copywrite-text">
+                  <p style="color: #777a7e; font-weight: 600">
+                    Copyright &copy;
+                    <script>
+                      document.write(new Date().getFullYear());
+                    </script>
+                  </p>
                 </div>
+              </div>
+              <div class="col-12 col-md-7">
+                <div class="social-info">
+                  <span style="color: #0e8fcd; font-weight: 600">
+                    Arusk Pharma Private Ltd.</span
+                  >
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
-    <!-- Footer Area End -->
+      </footer>
+      <!-- Footer Area End -->
 
-    <!-- **** All JS Files ***** -->
-    <!-- jQuery 2.2.4 -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Popper -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- All Plugins -->
-    <script src="js/roberto.bundle.js"></script>
+      <!-- **** All JS Files ***** -->
+      <!-- jQuery 2.2.4 -->
+      <script src="js/jquery.min.js"></script>
+      <!-- Popper -->
+      <script src="js/popper.min.js"></script>
+      <!-- Bootstrap -->
+      <script src="js/bootstrap.min.js"></script>
+      <!-- All Plugins -->
+      <script src="js/roberto.bundle.js"></script>
 
-    <!-- Put ur JS here -->
-    <script src="js/pages/default.js"></script>
-    <script src="js/pages/master.js"></script>
-        
-        <!-- Active -->
-    <script src="js/default-assets/active.js"></script>
+      <!-- Put ur JS here -->
+      <script src="js/pages/default.js"></script>
+      <script src="js/pages/master.js"></script>
+
+      <!-- Active -->
+      <script src="js/default-assets/active.js"></script>
     </div>
-        <div class="hover_bkgr_fricc">
-        <span class="helper"></span>
-        <div>
-            <div class="popupCloseButton">X</div>   
-            <div id="divDiscountOffer">
-            <h4 class="blink_me"><span class="textshadow" style="color:#344a7b">Hurry up!!!</span></h4>     
-            <img src="img/admission_new.jpg" style="max-width:100%;"/>
-            <!-- <span class="clickhere blink_me">Click Here</span> -->
-            </div>
+    <div class="hover_bkgr_fricc">
+      <span class="helper"></span>
+      <div>
+        <div class="popupCloseButton">X</div>
+        <div id="divDiscountOffer">
+          <h4 class="blink_me">
+            <span class="textshadow" style="color: #344a7b">Hurry up!!!</span>
+          </h4>
+          <img src="img/admission_new.jpg" style="max-width: 100%" />
+          <!-- <span class="clickhere blink_me">Click Here</span> -->
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
